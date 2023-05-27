@@ -2,6 +2,7 @@ package com.bridglabz.AddressBookTask;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.Scanner;
 public class AddressBookMain {
     public static void main(String[] args) {
@@ -11,8 +12,9 @@ public class AddressBookMain {
         int ch = 0;
         do{
             System.out.println(" 1 Add ");
-            System.out.println(" 2 Edit ");
+            System.out.println(" 2 Display ");
             System.out.println(" 3 Delete ");
+            System.out.println("4 Update ");
             System.out.println("Enter your choice.");
             ch=sc1.nextInt();
 
@@ -61,6 +63,44 @@ public class AddressBookMain {
                         System.out.println("Record is not found");
                     }else{
                         System.out.println("Record is deleted successfully..");
+                    }
+                    System.out.println("----------------------------------------------");
+                    break;
+
+
+
+                case 4:
+                     found=false;
+                    System.out.println("Enter student number to update:");
+                     studentNumber= sc1.nextInt();
+                    System.out.println("----------------------------------------");
+                    ListIterator<Contact>li=list.listIterator();
+                    while(li.hasNext()){
+                        Contact e=li.next();
+                        if(e.getPhoneNumber()==studentNumber){
+                            System.out.println("Enter the first name: ");
+                            firstName= sc1.nextLine();
+                            System.out.println("Enter last Name:");
+                            lastName=sc1.nextLine();
+                            System.out.println("Enter the address: ");
+                            address=sc1.nextLine();
+                            System.out.println("Enter the city: ");
+                            city=sc1.nextLine();
+                            System.out.println("Enter state: ");
+                            state=sc1.nextLine();
+                            System.out.println("Enter the zip code .");
+                            zip=sc1.nextInt();
+                            System.out.println("Enter phone number:");
+                            phone= sc1.nextInt();
+                            System.out.println("Enter email: ");
+                            email= sc1.nextLine();
+                            li.set(new Contact(firstName,lastName,address,city,state,zip,phone,email));
+                            found=true;
+                        }}
+                    if(!found){
+                        System.out.println("Record is not found");
+                    }else{
+                        System.out.println("Record is Updated successfully..");
                     }
                     System.out.println("----------------------------------------------");
                     break;
