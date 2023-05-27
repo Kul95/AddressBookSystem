@@ -45,8 +45,25 @@ public class AddressBookMain {
                     System.out.println("----------------------------------------------");
                     break;
 
-
-
+                case 3:
+                    boolean found=false;
+                    System.out.println("Enter student record to delete:");
+                    int studentNumber= sc1.nextInt();
+                    System.out.println("----------------------------------------");
+                    i=list.iterator();
+                    while(i.hasNext()){
+                        Contact e=i.next();
+                        if(e.getPhoneNumber()==studentNumber){
+                            i.remove();
+                            found=true;
+                        }}
+                    if(!found){
+                        System.out.println("Record is not found");
+                    }else{
+                        System.out.println("Record is deleted successfully..");
+                    }
+                    System.out.println("----------------------------------------------");
+                    break;
             }
         }while (ch!=0);
     }
